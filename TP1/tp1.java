@@ -1,8 +1,6 @@
 package INFO3.TP1;
 
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 class tp1 {
     public static void main(String[] args) {
