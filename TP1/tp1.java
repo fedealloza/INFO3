@@ -9,8 +9,6 @@ class tp1 {
         int base, exponente;
         boolean b=true;
 
-        
-
         do {
             System.out.println("\n1- Factorial de n.");
             System.out.println("2- Suma de los primeros n enteros.");
@@ -55,17 +53,19 @@ class tp1 {
     }
 
     public static int calcfactorial (int n1) {
-        if (n1 == 0){
+        if (n1 == 1){
+            System.out.print(n1);
             return 1;
         } else {
-            return n1 * calcfactorial(n1-1);
+            int prod = calcfactorial(n1-1);
+            System.out.print(" * "+n1);
+            return prod * n1;
         }
     }
 
     public static int sumarecursiva (int n1) {
         if (n1 == 1){
             System.out.print(n1);
-            
             return 1;
         } else {
             int sum = sumarecursiva(n1-1);
