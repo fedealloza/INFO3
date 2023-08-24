@@ -1,5 +1,4 @@
 package INFO3.TP1;
-
 import java.util.Scanner;
 
 class tp1 {
@@ -7,40 +6,13 @@ class tp1 {
         Scanner var = new Scanner(System.in);
 
         int opcion;
-        int n1=4;
         int base, exponente;
-        boolean b;
+        boolean b=true;
+
+        
 
         do {
-            System.out.print("Ingrese el número 1: ");
-            try {
-                String baseaux;
-                baseaux = var.nextLine();
-                base = Integer.parseInt(baseaux);
-                b = false;
-                break; // Sale del bucle si se ingresa un valor válido
-            } catch (NumberFormatException  e) {
-                System.out.println("Error: Ingrese un valor numérico válido.");
-            }
-        } while (b == true);
-        b=true;
-        do {
-            System.out.print("Ingrese el número 2: ");
-            try {
-                String exponenteaux;
-                exponenteaux = var.nextLine();
-                exponente = Integer.parseInt(exponenteaux);
-                b = false;
-                break; // Sale del bucle si se ingresa un valor válido
-            } catch (NumberFormatException  e) {
-                System.out.println("Error: Ingrese un valor numérico válido.");
-            }
-        } while (b == true);
-
-
-
-        do {
-            System.out.println("\n1- Factorial de 4.");
+            System.out.println("\n1- Factorial de n.");
             System.out.println("2- Suma de los primeros n enteros.");
             System.out.println("3- Multiplicación.");
             System.out.println("4- División.");
@@ -48,17 +20,20 @@ class tp1 {
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
             opcion = var.nextInt();
-
+            int n1 = 0;
             switch (opcion) {
                 case 1:
+                    n1 = pedirEntero();
                     int factorial = calcfactorial(n1);
                     System.out.println("El factorial de "+ n1 + " es: "+ factorial);
                     break;
                 case 2:
-                    int suma = sumarecursiva(n1);
-                    System.out.println("La suma de 1+2+3+4 es: "+ suma);
+                    n1 = pedirEntero();
+                    System.out.println();
+                    int suma = sumarecursiva(n1);   
+                    System.out.println(" = "+suma);
                     break;
-                case 3:
+                /*case 3:
                         resultado = multiplicar(n1, n2);
                         System.out.println("La multiplicación es: " + resultado);
                         agregarResultado(resultado);
@@ -88,11 +63,74 @@ class tp1 {
     }
 
     public static int sumarecursiva (int n1) {
+        if (n1 == 1){
+            System.out.print(n1);
+            
+            return 1;
+        } else {
+            int sum = sumarecursiva(n1-1);
+            System.out.print(" + "+n1);
+            return sum + n1;
+            
+        }
+    }
+
+    public static int pedirEntero (){
+        boolean a = true;
+        int n1=0;
+        Scanner var = new Scanner(System.in);
+        do {
+            System.out.print("Ingrese el número entero: ");
+            try {
+                String n1a;
+                n1a = var.nextLine();
+                n1 = Integer.parseInt(n1a);
+                a = false;
+                break; // Sale del bucle si se ingresa un valor válido
+            } catch (NumberFormatException  e) {
+                System.out.println("Error: Ingrese un valor numérico válido.");
+            }
+        } while (a == true);
+        return n1;
+    }
+    /*public static void potencia() {
+        do {
+            System.out.print("Ingrese el número 1: ");
+            try {
+                String baseaux;
+                baseaux = var.nextLine();
+                base = Integer.parseInt(baseaux);
+                b = false;
+                break; // Sale del bucle si se ingresa un valor válido
+            } catch (NumberFormatException  e) {
+                System.out.println("Error: Ingrese un valor numérico válido.");
+            }
+        } while (b == true);
+        b=true;
+        do {
+            System.out.print("Ingrese el número 2: ");
+            try {
+                String exponenteaux;
+                exponenteaux = var.nextLine();
+                exponente = Integer.parseInt(exponenteaux);
+                b = false;
+                break; // Sale del bucle si se ingresa un valor válido
+            } catch (NumberFormatException  e) {
+                System.out.println("Error: Ingrese un valor numérico válido.");
+            }
+        } while (b == true);
+    }*/
+    /*public static int conteorecursivo (int n1) {
+
+
+        for(int n;;){
+
+        }
         if (n1 == 0){
             return 1;
         } else {
             return n1 + calcfactorial(n1-1);
         }
-    }
+    }*/
 
 }
