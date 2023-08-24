@@ -8,6 +8,7 @@ class tp1 {
 
         int opcion;
         int n1=4;
+        int f;
 
         do {
             System.out.println("\n1- Factorial de 4.");
