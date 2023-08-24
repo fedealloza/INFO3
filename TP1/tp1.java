@@ -8,6 +8,36 @@ class tp1 {
 
         int opcion;
         int n1=4;
+        int base, exponente;
+        boolean b;
+
+        do {
+            System.out.print("Ingrese el número 1: ");
+            try {
+                String baseaux;
+                baseaux = var.nextLine();
+                base = Integer.parseInt(baseaux);
+                b = false;
+                break; // Sale del bucle si se ingresa un valor válido
+            } catch (NumberFormatException  e) {
+                System.out.println("Error: Ingrese un valor numérico válido.");
+            }
+        } while (b == true);
+        b=true;
+        do {
+            System.out.print("Ingrese el número 2: ");
+            try {
+                String exponenteaux;
+                exponenteaux = var.nextLine();
+                exponente = Integer.parseInt(exponenteaux);
+                b = false;
+                break; // Sale del bucle si se ingresa un valor válido
+            } catch (NumberFormatException  e) {
+                System.out.println("Error: Ingrese un valor numérico válido.");
+            }
+        } while (b == true);
+
+
 
         do {
             System.out.println("\n1- Factorial de 4.");
@@ -28,11 +58,7 @@ class tp1 {
                     int suma = sumarecursiva(n1);
                     System.out.println("La suma de 1+2+3+4 es: "+ suma);
                     break;
-                 /*case 2:
-                    resultado = restar(n1, n2);
-                    System.out.println("La resta es: " + resultado);       
-                    break;
-                    case 3:
+                case 3:
                         resultado = multiplicar(n1, n2);
                         System.out.println("La multiplicación es: " + resultado);
                         agregarResultado(resultado);
