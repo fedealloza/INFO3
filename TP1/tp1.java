@@ -57,7 +57,7 @@ class tp1 {
 
     public static int calcfactorial (int n1) {
         if (n1 == 0){
-            return 1;
+            return 0;
         } else {
             return n1 * calcfactorial(n1-1);
         }
