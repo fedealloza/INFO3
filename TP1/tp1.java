@@ -6,7 +6,7 @@ class tp1 {
         Scanner var = new Scanner(System.in);
 
         int opcion;
-        int base, exponente;
+        
         boolean b=true;
 
         do {
@@ -95,6 +95,7 @@ class tp1 {
         return n1;
     }
     /*public static void potencia() {
+        int base=0, exponente=0;
         do {
             System.out.print("Ingrese el número 1: ");
             try {
