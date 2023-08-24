@@ -22,8 +22,9 @@ class tp1 {
             switch (opcion) {
                 case 1:
                     n1 = pedirEntero();
+                    System.out.println();
                     int factorial = calcfactorial(n1);
-                    System.out.println("El factorial de "+ n1 + " es: "+ factorial);
+                    System.out.println(" = "+ factorial);
                     break;
                 case 2:
                     n1 = pedirEntero();
