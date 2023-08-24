@@ -30,7 +30,7 @@ class tp1 {
                     int suma = sumarecursiva(n1);
                     System.out.println("La suma de 1+2+3+4 es: "+ suma);
                     break;
-                /*    case 2:
+                 case 2:
                     resultado = restar(n1, n2);
                     System.out.println("La resta es: " + resultado);       
                     break;
