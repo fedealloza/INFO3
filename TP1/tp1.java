@@ -12,8 +12,8 @@ class tp1 {
         do {
             System.out.println("\n1- Factorial de n.");
             System.out.println("2- Suma de los primeros n enteros.");
-            System.out.println("3- Multiplicación.");
-            System.out.println("4- División.");
+            System.out.println("3- Calcular potencia de un numero base elevado a un exponente.");
+            System.out.println("4- imprima un conteo regresivo desde un numero hasta 1.");
             System.out.println("5- Mostrar Historial.");
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
@@ -72,7 +72,6 @@ class tp1 {
             int sum = sumarecursiva(n1-1);
             System.out.print(" + "+n1);
             return sum + n1;
-            
         }
     }
 
