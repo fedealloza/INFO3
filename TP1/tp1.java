@@ -19,6 +19,7 @@ class tp1 {
             System.out.print("\nIngrese la opción: ");
             opcion = var.nextInt();
             int n1 = 0;
+            int base=0, exponente=0;
             switch (opcion) {
                 case 1:
                     n1 = pedirEntero();
@@ -32,12 +33,13 @@ class tp1 {
                     int suma = sumarecursiva(n1);   
                     System.out.println(" = "+suma);
                     break;
-                /*case 3:
-                        resultado = multiplicar(n1, n2);
-                        System.out.println("La multiplicación es: " + resultado);
-                        agregarResultado(resultado);
-                        break;
-                    case 4:
+                case 3:
+                    base = pedirEntero();
+                    exponente = pedirEntero();
+                    System.out.println("La multiplicación es: " + resultado);
+                    agregarResultado(resultado);
+                    break;
+                   /*case 4:
                         resultado = dividir(n1, n2);
                         System.out.println("El resultado de la división es: " + resultado);
                         agregarResultado(resultado);
@@ -93,34 +95,11 @@ class tp1 {
         } while (a == true);
         return n1;
     }
-    /*public static void potencia() {
-        int base=0, exponente=0;
-        do {
-            System.out.print("Ingrese el número 1: ");
-            try {
-                String baseaux;
-                baseaux = var.nextLine();
-                base = Integer.parseInt(baseaux);
-                b = false;
-                break; // Sale del bucle si se ingresa un valor válido
-            } catch (NumberFormatException  e) {
-                System.out.println("Error: Ingrese un valor numérico válido.");
-            }
-        } while (b == true);
-        b=true;
-        do {
-            System.out.print("Ingrese el número 2: ");
-            try {
-                String exponenteaux;
-                exponenteaux = var.nextLine();
-                exponente = Integer.parseInt(exponenteaux);
-                b = false;
-                break; // Sale del bucle si se ingresa un valor válido
-            } catch (NumberFormatException  e) {
-                System.out.println("Error: Ingrese un valor numérico válido.");
-            }
-        } while (b == true);
-    }*/
+
+    public static void potencia(int base, int exponente) {
+        
+        
+    }
     /*public static int conteorecursivo (int n1) {
 
 
