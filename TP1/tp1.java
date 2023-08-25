@@ -36,6 +36,7 @@ class tp1 {
                 case 3:
                     base = pedirEntero();
                     exponente = pedirEntero();
+                    int potencia = calcpotencia(base, exponente);
                     System.out.println("La multiplicación es: " + resultado);
                     agregarResultado(resultado);
                     break;
@@ -96,8 +97,15 @@ class tp1 {
         return n1;
     }
 
-    public static void potencia(int base, int exponente) {
-        
+    public static void calcpotencia(int base, int exponente) {
+        if (n1 == 1){
+            System.out.print(n1);
+            return 1;
+        } else {
+            int sum = sumarecursiva(n1-1);
+            System.out.print(" + "+n1);
+            return sum + n1;
+        }
         
     }
     /*public static int conteorecursivo (int n1) {
