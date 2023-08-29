@@ -34,18 +34,23 @@ class tp1 {
                     System.out.println(" = "+suma);
                     break;
                 case 3:
+                    System.out.println("INGRESE PRIMERO LA BASE Y DESPUES EL EXPONENTE");
+                    
                     base = pedirEntero();
                     exponente = pedirEntero();
+                    System.out.print(base+" ^ "+exponente+" : ");
                     int potencia = calcpotencia(base, exponente);
-                    System.out.println("La multiplicación es: " + resultado);
-                    agregarResultado(resultado);
+                    System.out.println(" = "+potencia);
                     break;
-                   /*case 4:
-                        resultado = dividir(n1, n2);
-                        System.out.println("El resultado de la división es: " + resultado);
-                        agregarResultado(resultado);
-                        break;
-                    case 5:1
+
+                case 4:
+                    n1 = pedirEntero();
+                    System.out.println();
+                    System.out.print("n = "+n1+" : ");
+                    int cont = conteorecursivo(n1);   
+                    System.out.println(cont);
+                    break;
+                    /*case 5:1
                         if (historial.isEmpty()) {
                             System.out.println("NO HAY NADA");
                         } else {
@@ -97,22 +102,25 @@ class tp1 {
         return n1;
     }
 
-    public static void calcpotencia(int base, int exponente) {
-        base = 0;
-        
-        
-    }
-    /*public static int conteorecursivo (int n1) {
-
-
-        for(int n;;){
-
-        }
-        if (n1 == 0){
+    public static int calcpotencia(int base, int exponente) {
+        //si el exponente es igual a 0 se devuelve 1
+        //ya que cualquier número elevado a la potencia 0 es igual a 1
+        if (exponente == 0){
             return 1;
         } else {
-            return n1 + calcfactorial(n1-1);
+            System.out.print(base + " * ");
+            int pot = calcpotencia(base, exponente - 1);
+            return base * pot;
         }
-    }*/
+    }
 
+    public static int conteorecursivo (int n1) {
+        if (n1 == 1){
+            return 1;
+        } else {
+            System.out.print(n1 + " , ");
+            int conteo = conteorecursivo(n1-1);
+            return conteo;
+        }
+    }
 }
