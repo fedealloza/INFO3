@@ -98,7 +98,7 @@ class tp1 {
     }
 
     public static void calcpotencia(int base, int exponente) {
-        
+        base = 0;
         
         
     }
