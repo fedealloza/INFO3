@@ -7,21 +7,25 @@ class tp1 {
         Scanner var = new Scanner(System.in);
         int opcion;
         boolean b=true;
+        
         do {
             // Mostrar opciones al usuario
             System.out.println("\n1- Factorial de n.");
             System.out.println("2- Suma de los primeros n enteros.");
             System.out.println("3- Calcular potencia de un numero base elevado a un exponente.");
             System.out.println("4- imprima un conteo regresivo desde un numero hasta 1.");
-            System.out.println("5- Mostrar Historial.");
+            System.out.println("5- calcule el producto de dos numeros enteros usando sumas sucesivas.");
+            System.out.println("6- imprima los elementos de un arreglo en orden inverso.");
+            System.out.println("7-");
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
             opcion = var.nextInt();
 
             // Declarar variables
-            int n1 = 0;
-            int base=0, exponente=0;
-
+            int n1 = 0, n2=0, base=0, exponente=0;
+            
+            
+            int[] arreglo = {1, 2, 3, 4, 5};
             // Realizar la acción correspondiente a la opción seleccionada
             switch (opcion) {
                 case 1:
@@ -55,13 +59,25 @@ class tp1 {
                     int cont = conteorecursivo(n1);
                     System.out.println(cont);
                     break;
-                /*case 5:1
-                    if (historial.isEmpty()) {
-                        System.out.println("NO HAY NADA");
-                    } else {
-                        mostrarHistorial();
-                    }
-                    break;*/
+                case 5:
+                    n1 = pedirEntero();
+                    n2 = pedirEntero();
+                    System.out.print(n1+" x "+n2+" : ");
+                    int producto = prodenteros(n1, n2);
+                    System.out.println(" = "+producto);
+                    break;
+                case 6:
+                    System.out.println();
+                    imprimirEnOrdenInverso(arreglo, arreglo.length - 1);
+                    System.out.println();
+                    break;
+                case 7:
+                    n1 = pedirEntero();
+                    System.out.println();
+                    int cantidadUnos = contarUnosBinarios(n1);
+                    System.out.println("Cantidad de unos en la representación binaria de " + n1 + ": " + cantidadUnos);
+                    System.out.println();
+                    break;
             }
         } while (opcion != 0);
     }
@@ -133,4 +149,39 @@ class tp1 {
             return conteo;
         }
     }
+
+    
+    public static int prodenteros(int n1, int n2) {
+        if (n2 == 0) {
+            return 0;
+        } else {
+            System.out.print(n1 + " + "); // Imprime el número actual
+            int prod = prodenteros(n1, n2 - 1); // Llamada recursiva con n2 disminuido en 1
+            return n1 + prod; // Retorna la suma del número actual y el resultado de la llamada recursiva
+        }
+    }
+
+    public static void imprimirEnOrdenInverso(int[] arreglo, int indice) {
+        // Si el índice es mayor o igual a cero
+        if (indice >= 0) {
+            // Imprimir el elemento en el índice actual del arreglo
+            System.out.print(arreglo[indice] + " , ");
+            
+            // Llamar recursivamente a la función con un índice menor
+            imprimirEnOrdenInverso(arreglo, indice - 1);
+        }
+    }
+
+    public static int contarUnosBinarios(int n1) {
+        if (n1 == 0) {
+            return 0;
+        } else {
+            if (n1 % 2 == 1) {
+                return contarUnosBinarios(n1 / 2) + 1;
+            } else {
+                return contarUnosBinarios(n1 / 2);
+            }
+        }
+    }
+
 }
