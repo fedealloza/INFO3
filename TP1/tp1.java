@@ -11,39 +11,34 @@ class tp1 {
         do {
             // Mostrar opciones al usuario
             System.out.println("\n1- Factorial de n.");
-            System.out.println("2- Suma de los primeros n enteros.");
+            System.out.println("2- Sumar los primeros n enteros.");
             System.out.println("3- Calcular potencia de un numero base elevado a un exponente.");
-            System.out.println("4- imprima un conteo regresivo desde un numero hasta 1.");
-            System.out.println("5- calcule el producto de dos numeros enteros usando sumas sucesivas.");
-            System.out.println("6- imprima los elementos de un arreglo en orden inverso.");
-            System.out.println("7-");
+            System.out.println("4- Imprimir un conteo regresivo desde un numero hasta 1.");
+            System.out.println("5- Calcular el producto de dos numeros enteros usando sumas sucesivas.");
+            System.out.println("6- Imprimir los elementos de un arreglo en orden inverso.");
+            System.out.println("7- Devolver el numero de unos en la representacion binaria de N.");
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
             opcion = var.nextInt();
 
             // Declarar variables
             int n1 = 0, n2=0, base=0, exponente=0;
-            
-            
             int[] arreglo = {1, 2, 3, 4, 5};
-            // Realizar la acción correspondiente a la opción seleccionada
+        
             switch (opcion) {
                 case 1:
-                    // Pedir entrada al usuario y calcular el factorial
                     n1 = pedirEntero();
                     System.out.println();
                     int factorial = calcfactorial(n1);
                     System.out.println(" = "+ factorial);
                     break;
                 case 2:
-                    // Pedir entrada al usuario y calcular la suma
                     n1 = pedirEntero();
                     System.out.println();
                     int suma = sumarecursiva(n1);
                     System.out.println(" = "+suma);
                     break;
                 case 3:
-                    // Pedir entrada al usuario y calcular la potencia
                     System.out.println("INGRESE PRIMERO LA BASE Y DESPUES EL EXPONENTE");
                     base = pedirEntero();
                     exponente = pedirEntero();
@@ -52,7 +47,6 @@ class tp1 {
                     System.out.println(" = "+potencia);
                     break;
                 case 4:
-                    // Pedir entrada al usuario y realizar el conteo regresivo
                     n1 = pedirEntero();
                     System.out.println();
                     System.out.print("n = "+n1+" : ");
@@ -173,12 +167,15 @@ class tp1 {
     }
 
     public static int contarUnosBinarios(int n1) {
+        //Si el número es 0, no hay unos en su representación binaria
         if (n1 == 0) {
             return 0;
         } else {
+            //Si el número es impar, se divide entre 2 y se suma 1 al resultado recursivo
             if (n1 % 2 == 1) {
                 return contarUnosBinarios(n1 / 2) + 1;
             } else {
+                //Si el número es par, simplemente se divide entre 2 y se obtiene el resultado recursivo
                 return contarUnosBinarios(n1 / 2);
             }
         }
