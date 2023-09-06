@@ -2,11 +2,19 @@ package INFO3.TP2;
 
 import java.util.Scanner;
 
-class tp2 {
+class ej1a {
     public static void main(String[] args) {
-
-
+        int[] arrInt = {5, 2, 8, 1, 3};
         
+        // Ordenación de enteros usando los métodos
+        insertionSort(arrInt);
+        shellSort(arrInt);
+        quickSort(arrInt, 0, arrInt.length - 1);
+        
+        // Imprimir el arreglo ordenado
+        for (int num : arrInt) {
+            System.out.print(num + " ");
+        }
 
     }
 
