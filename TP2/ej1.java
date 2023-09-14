@@ -37,13 +37,13 @@ public class ej1 {
                     long startTime = System.nanoTime();
                     
                     System.out.println("Array original:");
-                    Insertion.showArray(randomArray);
+                    showArray(randomArray);
 
                     quickSortInt(randomArray, 0, randomArray.length-1);
                     long endTime = System.nanoTime();
                     
                     System.out.println("\nArray ordenado:");
-                    Insertion.showArray(randomArray);
+                    showArray(randomArray);
                     long elapsedTimeMillis = (endTime - startTime) / 100000;
                     
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis + " milisegundos.");
@@ -66,7 +66,26 @@ public class ej1 {
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis2 + " milisegundos.");
                     break;
                 case 3:
+                    Double[] randomArrayDouble = new Double[(int) arraySizeDouble()];
+
+                    Random randomDouble = new Random();
+                    for (int i = 0; i < randomArrayDouble.length; i++) {
+                        randomArrayDouble[i] = randomDouble.nextDouble();
+                    }    
+
+                    long startTime3 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    showArrayDouble(randomArrayDouble);
+
+                    quickSortDouble(randomArrayDouble, 0, randomArrayDouble.length-1);
+                    long endTime3 = System.nanoTime();
                     
+                    System.out.println("\nArray ordenado:");
+                    showArrayDouble(randomArrayDouble);
+
+                    long elapsedTimeMillis3 = (endTime3 - startTime3) / 100000;
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis3 + " milisegundos.");
                     break;
                 case 4:
                     
@@ -96,11 +115,23 @@ public class ej1 {
         } 
     }
 
+    public static void showArrayDouble(Double[] array) {
+        for (Double number : array) {
+            System.out.print(number + " ");
+        }
+    }
+
     public static Integer arraySize() throws InputMismatchException {
         Scanner scan = new Scanner(System.in);
         
         System.out.print("Ingrese la cantidad de numeros del array: ");
         return scan.nextInt();
+    }
+
+    public static double arraySizeDouble() throws InputMismatchException {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Ingrese la cantidad de números del array: ");
+        return scan.nextDouble();
     }
 
     /*
@@ -274,4 +305,30 @@ public class ej1 {
         System.out.println();
     }
 
+    public static void quickSortDouble(Double[] randomArrayDouble, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partitionDouble(randomArrayDouble, low, high);
+            quickSortDouble(randomArrayDouble, low, pivotIndex - 1);
+            quickSortDouble(randomArrayDouble, pivotIndex + 1, high);
+        }
+    }
+
+    private static int partitionDouble(Double[] arr, int low, int high) {
+        double pivot = arr[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swapDouble(arr, i, j);
+            }
+        }
+        swapDouble(arr, i + 1, high);
+        return i + 1;
+    }
+    
+    private static void swapDouble(Double[] arr, int i, int j) {
+        double temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;        
+    }
 }
