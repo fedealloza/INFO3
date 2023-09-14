@@ -8,7 +8,7 @@ public class ej1 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
         int opcion;
-
+        
         do {
             // Mostrar opciones al usuario
             System.out.println("\n1- QuickSort con enteros.");
@@ -35,29 +35,35 @@ public class ej1 {
                     }
                     
                     long startTime = System.nanoTime();
-            
+                    
+                    System.out.println("Array original:");
+                    Insertion.showArray(randomArray);
+
                     quickSortInt(randomArray, 0, randomArray.length-1);
                     long endTime = System.nanoTime();
                     
+                    System.out.println("\nArray ordenado:");
+                    Insertion.showArray(randomArray);
                     long elapsedTimeMillis = (endTime - startTime) / 100000;
                     
-                    Insertion.showArray(randomArray);
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis + " milisegundos.");
                     break;
                 case 2:
                     String[] array = {"hola", "adios", "bienvenido", "chau", "hasta luego"};
 
+                    long startTime2 = System.nanoTime();
+
                     System.out.println("Array original:");
                     printArrayString(array);
-            
+                    
                     quickSortString(array, 0, array.length - 1);
-            
+                    long endTime2 = System.nanoTime();
+
                     System.out.println("\nArray ordenado:");
                     printArrayString(array);
-                    long elapsedTimeMillis = (endTime - startTime) / 100000;
+                    long elapsedTimeMillis2 = (endTime2 - startTime2) / 100000;
                     
-                    Insertion.showArray(randomArray);
-                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis + " milisegundos.");
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis2 + " milisegundos.");
                     break;
                 case 3:
                     
@@ -93,7 +99,7 @@ public class ej1 {
     public static Integer arraySize() throws InputMismatchException {
         Scanner scan = new Scanner(System.in);
         
-        System.out.println("Ingrese la cantidad de numeros del array");
+        System.out.print("Ingrese la cantidad de numeros del array: ");
         return scan.nextInt();
     }
 
