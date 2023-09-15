@@ -101,17 +101,7 @@ public class ej1 {
                     System.out.println("Array original:");
                     showArrayInsertion(randomArrayInsertionInt);
 
-                    for (int i = 1; i < randomArrayInsertionInt.length; i++) {
-                        int key = randomArrayInsertionInt[i];
-                        int j = i - 1;
-                
-                        while (j >= 0 && randomArrayInsertionInt[j] > key) {
-                            randomArrayInsertionInt[j + 1] = randomArrayInsertionInt[j];
-                            j--;
-                        }
-                
-                        randomArrayInsertionInt[j + 1] = key;
-                    }
+                    insertionSort(randomArrayInsertionInt);
                     long endTime4 = System.nanoTime();
 
                     System.out.println("\nArray ordenado:");
@@ -137,21 +127,92 @@ public class ej1 {
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis5 + " milisegundos.");
                     break;
                 case 6:
+                    Double[] randomArrayInsertionDouble = new Double[(int) arraySizeDouble()];
+
+                    Random randomInserDouble = new Random();
+                    for (int i = 0; i < randomArrayInsertionDouble.length; i++) {
+                        randomArrayInsertionDouble[i] = randomInserDouble.nextDouble();
+                    }    
+
+                    long startTime6 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    showArrayInsertionDouble(randomArrayInsertionDouble);
+                    
+                    int n = randomArrayInsertionDouble.length;
+            
+                    insertionSortDouble(randomArrayInsertionDouble);
+                    long endTime6 = System.nanoTime();
+                
+                    System.out.println("Array ordenado:");
+                    showArrayInsertionDouble(randomArrayInsertionDouble);
+                
                     long elapsedTimeMillis6 = (endTime6 - startTime6) / 100000;
                     
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis6 + " milisegundos.");
                     break;
                 case 7:
+                    Integer[] randomArrayShellsortInt = new Integer[arraySize()];
+
+                    Random randomShellRandom = new Random();
+                    for (int i = 0; i < randomArrayShellsortInt.length; i++) {
+                        randomArrayShellsortInt[i] = randomShellRandom.nextInt(10);
+                    }
+
+                    long startTime7 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    showArrayShellsortInt(randomArrayShellsortInt);
+
+
+                    shellSortInt(randomArrayShellsortInt);
+                    long endTime7 = System.nanoTime();
+
+                    
+                    System.out.println("\nArray ordenado:");
+                    showArrayShellsortInt(randomArrayShellsortInt);
+
                     long elapsedTimeMillis7 = (endTime7 - startTime7) / 100000;
                     
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis7 + " milisegundos.");
                     break;
                 case 8:
+                    String[] arrShellStrings = {"hola", "adios", "bienvenido", "chau", "hasta luego"};
+                    
+                    long startTime8 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    printArrayStringShell(arrShellStrings);
+                    
+                    shellSortString(arrShellStrings);
+                    long endTime8 = System.nanoTime();
+                    
+                    System.out.println("\nArray ordenado:");
+                    printArrayStringShell(arrShellStrings);
+                    
                     long elapsedTimeMillis8 = (endTime8 - startTime8) / 100000;
                     
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis8 + " milisegundos.");
                     break;
                 case 9:
+                    Double[] randomArrayShellSortDouble = new Double[(int) arraySizeDouble()];
+
+                    Random randomShellDouble = new Random();
+                    for (int i = 0; i < randomArrayShellSortDouble.length; i++) {
+                        randomArrayShellSortDouble[i] = randomShellDouble.nextDouble();
+                    }   
+
+                    long startTime9 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    showArrayShellsortDouble(randomArrayShellSortDouble);
+
+                    shellSortDouble(randomArrayShellSortDouble);
+                    long endTime9 = System.nanoTime();
+                    
+                    System.out.println("\nArray ordenado:");
+                    showArrayShellsortDouble(randomArrayShellSortDouble);
+
                     long elapsedTimeMillis9 = (endTime9 - startTime9) / 100000;
                     
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis9 + " milisegundos.");
@@ -185,6 +246,7 @@ public class ej1 {
         return scan.nextDouble();
     }
 
+
     /*
      * --------FUNCIONAMIENTO DEL METODO POR INSERCION-------------------
      * 
@@ -202,27 +264,43 @@ public class ej1 {
      *  
      * 5. Al finalizar, tendremos una lista completamente ordenada.
      */
-    public static class InsertionSortInt {
-        // Método para ordenar el arreglo utilizando el algoritmo de inserción
-        public static void insertionSort(int[] arrInt) {
-            int n = arrInt.length;
+    // Método para ordenar el arreglo utilizando el algoritmo de inserción
+    public static void insertionSort(Integer[] arrInt) {
+        int n = arrInt.length;
+
+        for (int i = 1; i < n; ++i) {
+            int key = arrInt[i];
+            int j = i - 1;
+                
+            // Mover los elementos mayores que key una posición hacia adelante
+            while (j >= 0 && arrInt[j] > key) {
+                arrInt[j + 1] = arrInt[j];
+                j = j - 1;
+            }
+                
+            // Insertar key en su posición correcta
+            arrInt[j + 1] = key;
+            }
+    }
+    
+    public static void insertionSortDouble(Double[] arrDouble) {
+            int n = arrDouble.length;
             
             for (int i = 1; i < n; ++i) {
-                int key = arrInt[i];
+                double key = arrDouble[i];
                 int j = i - 1;
                 
                 // Mover los elementos mayores que key una posición hacia adelante
-                while (j >= 0 && arrInt[j] > key) {
-                    arrInt[j + 1] = arrInt[j];
+                while (j >= 0 && arrDouble[j] > key) {
+                    arrDouble[j + 1] = arrDouble[j];
                     j = j - 1;
                 }
                 
                 // Insertar key en su posición correcta
-                arrInt[j + 1] = key;
+                arrDouble[j + 1] = key;
             }
-        }
     }
-    
+
     public static void InsertionSortString(String[] arr) {
         int n = arr.length;
         for (int i = 1; i < n; i++) {
@@ -236,12 +314,20 @@ public class ej1 {
         }
     }
     
+    
+    
     public static void showArrayInsertion(Integer[] array) {
         for (Integer integer : array) {
             System.out.print(integer + " ");
         } 
     }
 
+
+    public static void showArrayInsertionDouble(Double[] array) {
+        for (Double arrDouble : array) {
+            System.out.print(arrDouble + " ");
+        } 
+    }
 
     public static void printArrayStringInsertion(String[] array) {
         for (String element : array) {
@@ -271,33 +357,90 @@ public class ej1 {
      * 6. Finalmente, aplicamos el algoritmo de inserción en el arreglo completo 
      *    para asegurarnos de que todos los elementos estén en su posición correcta. 
      * 
-    
-    public static class ShellSort {
+     */
         // Método para ordenar el arreglo utilizando el algoritmo de Shell
-        public static void shellSort(int[] arr) {
-            int n = arr.length;
+    public static void shellSortInt(Integer[] arr) {
+        int n = arr.length;
             
-            // Definir el tamaño del salto
-            for (int gap = n / 2; gap > 0; gap /= 2) {
-                
-                // Insertion sort para cada salto
-                for (int i = gap; i < n; i++) {
-                    int temp = arr[i];
-                    int j;
+        // Definir el tamaño del salto
+        for (int gap = n / 2; gap > 0; gap /= 2) {        
+            // Insertion sort para cada salto
+            for (int i = gap; i < n; i++) {
+                int temp = arr[i];
+                int j;
                     
-                    // Mover los elementos mayores que temp una posición hacia adelante
-                    for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
-                        arr[j] = arr[j - gap];
-                    }
-                    
-                    // Insertar temp en su posición correcta
-                    arr[j] = temp;
+                // Mover los elementos mayores que temp una posición hacia adelante
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                    arr[j] = arr[j - gap];
                 }
+                    
+                 // Insertar temp en su posición correcta
+                arr[j] = temp;
             }
         }
     }
- */
 
+    public static void shellSortString(String[] arr) {
+        int n = arr.length;
+
+        // Definir el tamaño del salto
+        int gap = n / 2;
+        while (gap > 0) {
+             // Insertion sort para cada salto
+            for (int i = gap; i < n; i++) {
+                String temp = arr[i];
+                int j = i;
+                 // Mover los elementos mayores que temp una posición hacia adelante
+                while (j >= gap && arr[j - gap].compareTo(temp) > 0) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
+                }
+                // Insertar temp en su posición correcta
+                arr[j] = temp;
+            }
+            gap /= 2;
+        }
+    }
+
+    public static void shellSortDouble(Double[] arr) {
+        int n = arr.length;
+            
+        // Definir el tamaño del salto
+        for (int gap = n / 2; gap > 0; gap /= 2) {        
+            // Insertion sort para cada salto
+            for (int i = gap; i < n; i++) {
+                Double temp = arr[i];
+                int j;
+                    
+                // Mover los elementos mayores que temp una posición hacia adelante
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                    arr[j] = arr[j - gap];
+                }
+                    
+                 // Insertar temp en su posición correcta
+                arr[j] = temp;
+            }
+        }
+    }
+
+    public static void showArrayShellsortInt(Integer[] array) {
+        for (Integer integer : array) {
+            System.out.print(integer + " ");
+        } 
+    }
+
+    public static void showArrayShellsortDouble(Double[] array) {
+        for (Double shDouble : array) {
+            System.out.print(shDouble + " ");
+        } 
+    }
+
+    public static void printArrayStringShell(String[] array) {
+        for (String element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
 
     /*
      *
