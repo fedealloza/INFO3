@@ -221,6 +221,7 @@ public class ej1 {
         } while (opcion != 0);
     }
 
+
     public static void showArray(Integer[] array) {
         for (Integer integer : array) {
             System.out.print(integer + " ");
@@ -249,7 +250,7 @@ public class ej1 {
 
     /*
      * --------FUNCIONAMIENTO DEL METODO POR INSERCION-------------------
-     * 
+      
      * 1. Comenzamos con una lista/array de elementos desordenados. 
      * 
      * 2. Tomamos el primer elemento de la lista y lo consideramos como una lista ordenada de un solo elemento.
@@ -461,7 +462,7 @@ public class ej1 {
      * 5. Al finalizar, tendremos un arreglo completamente ordenado. 
      * 
      */
-    
+    //quickInt
     public static void quickSortInt(Integer[] array, int low, int high) {
         if (low < high) {
             int pivotIndex = partitionInt(array, low, high);
