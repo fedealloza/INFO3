@@ -20,8 +20,8 @@ class tp1 {
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
             opcion = var.nextInt();
-
-            // Declarar variables
+            //VARIABLES
+            
             int n1 = 0, n2=0, base=0, exponente=0;
             int[] arreglo = {1, 2, 3, 4, 5};
         
