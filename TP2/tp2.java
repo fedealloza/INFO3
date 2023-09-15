@@ -1,11 +1,10 @@
 package INFO3.TP2;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ej1 {
+public class tp2 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
         int opcion;
