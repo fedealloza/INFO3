@@ -1,5 +1,6 @@
 package INFO3.TP2;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -88,22 +89,72 @@ public class ej1 {
                     System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis3 + " milisegundos.");
                     break;
                 case 4:
-                    
+                    Integer[] randomArrayInsertionInt = new Integer[arraySize()];
+        
+                    Random randomInsertion = new Random();
+                    for (int i = 0; i < randomArrayInsertionInt.length; i++) {
+                        randomArrayInsertionInt[i] = randomInsertion.nextInt(10);
+                    }
+                
+                    long startTime4 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    showArrayInsertion(randomArrayInsertionInt);
+
+                    for (int i = 1; i < randomArrayInsertionInt.length; i++) {
+                        int key = randomArrayInsertionInt[i];
+                        int j = i - 1;
+                
+                        while (j >= 0 && randomArrayInsertionInt[j] > key) {
+                            randomArrayInsertionInt[j + 1] = randomArrayInsertionInt[j];
+                            j--;
+                        }
+                
+                        randomArrayInsertionInt[j + 1] = key;
+                    }
+                    long endTime4 = System.nanoTime();
+
+                    System.out.println("\nArray ordenado:");
+                    showArrayInsertion(randomArrayInsertionInt);
+
+                    long elapsedTimeMillis4 = (endTime4 - startTime4) / 100000;
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis4 + " milisegundos.");
                     break;
                 case 5:
+                    String[] arr = {"hola", "adios", "bienvenido", "chau", "hasta luego"};
+                    long startTime5 = System.nanoTime();
+
+                    System.out.println("Array original:");
+                    printArrayStringInsertion(arr);
+
+                    InsertionSortString(arr);
+                    long endTime5 = System.nanoTime();
                     
+                    System.out.println("\nArray ordenado:");
+                    printArrayStringInsertion(arr);
+                    long elapsedTimeMillis5 = (endTime5 - startTime5) / 100000;
+                    
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis5 + " milisegundos.");
                     break;
                 case 6:
+                    long elapsedTimeMillis6 = (endTime6 - startTime6) / 100000;
                     
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis6 + " milisegundos.");
                     break;
                 case 7:
+                    long elapsedTimeMillis7 = (endTime7 - startTime7) / 100000;
                     
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis7 + " milisegundos.");
                     break;
                 case 8:
+                    long elapsedTimeMillis8 = (endTime8 - startTime8) / 100000;
                     
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis8 + " milisegundos.");
                     break;
                 case 9:
+                    long elapsedTimeMillis9 = (endTime9 - startTime9) / 100000;
                     
+                    System.out.println("\nTiempo transcurrido: " + elapsedTimeMillis9 + " milisegundos.");
                     break;    
             }
         } while (opcion != 0);
@@ -150,8 +201,8 @@ public class ej1 {
      *    insertándolos en la posición correcta dentro de la lista ordenada.
      *  
      * 5. Al finalizar, tendremos una lista completamente ordenada.
-    
-    public static class InsertionSort {
+     */
+    public static class InsertionSortInt {
         // Método para ordenar el arreglo utilizando el algoritmo de inserción
         public static void insertionSort(int[] arrInt) {
             int n = arrInt.length;
@@ -171,7 +222,41 @@ public class ej1 {
             }
         }
     }
-     */
+    
+    public static void InsertionSortString(String[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            String key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j].compareTo(key) > 0) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    
+    public static void showArrayInsertion(Integer[] array) {
+        for (Integer integer : array) {
+            System.out.print(integer + " ");
+        } 
+    }
+
+
+    public static void printArrayStringInsertion(String[] array) {
+        for (String element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static Integer arraySizeInsertionInt() throws InputMismatchException {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.print("Ingrese la cantidad de numeros del array: ");
+        return scan.nextInt();
+    } 
+
     /*
      *
      * --------FUNCIONAMIENTO DEL SHELLSORT-------------------
