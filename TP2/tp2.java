@@ -143,7 +143,7 @@ public class tp2 {
                     insertionSortDouble(randomArrayInsertionDouble);
                     long endTime6 = System.nanoTime();
                 
-                    System.out.println("Array ordenado:");
+                    System.out.println("\nArray ordenado:");
                     showArrayInsertionDouble(randomArrayInsertionDouble);
                 
                     long elapsedTimeMillis6 = (endTime6 - startTime6) / 100000;
