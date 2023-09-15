@@ -250,13 +250,6 @@ public class ej1 {
         System.out.println();
     }
 
-    public static Integer arraySizeInsertionInt() throws InputMismatchException {
-        Scanner scan = new Scanner(System.in);
-        
-        System.out.print("Ingrese la cantidad de numeros del array: ");
-        return scan.nextInt();
-    } 
-
     /*
      *
      * --------FUNCIONAMIENTO DEL SHELLSORT-------------------
