@@ -1,6 +1,6 @@
 package INFO3.TP3;
 
-public class ListStack<AnyType>{
+public class ListStack<AnyType> {
     private ListNode<AnyType> topOfStack = null;
 
     public boolean isEmpty() {
