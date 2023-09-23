@@ -87,7 +87,33 @@ public class tp3 {
                     // Lógica para expresiones matemáticas
                     break;
                 case 4:
-                    // Lógica para implementación de una cola
+                    ArrayQueue<Integer> queueArray = new ArrayQueue<>();
+                    do {
+                        System.out.println("\na- Agregar un valor (enqueue). ");
+                        System.out.println("b- Eliminar el elemento del frente (dequeue). ");
+                        System.out.println("c- Ver el elemento del frente sin eliminar (getFront). ");
+                        System.out.println("z- Salir.");
+                        System.out.print("\nIngrese la opción: ");
+                        opcion2 = var.next().charAt(0);
+                        
+                        switch(opcion2){
+                            case 'a':
+                                System.out.print("\nIngrese el valor a agregar: ");
+                                x = var.nextInt();
+                                queueArray.enqueue(x);
+                                break;
+                            case 'b':
+                                try {
+                                    queueArray.dequeue();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 'c':
+                                System.out.println("Elemento del frente: " + queueArray.getFront());
+                                break;
+                        }
+                    } while (opcion2 != 'z'); 
                     break;
                 case 5:
                     // Lógica para ordenar una cola
