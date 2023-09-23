@@ -1,41 +1,97 @@
 package INFO3.TP3;
 
-import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class tp3 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
-        int opcion;
+        int opcion, x;
+        char opcion2;
         
         do {
             // Mostrar opciones al usuario
             System.out.println("\n1- Implementacion de una pila.");
-            System.out.println("2- Comprobacion palindromos.");
+            System.out.println("2- Comprobacion de palindromos.");
             System.out.println("3- Expresiones matematicas.");
             System.out.println("4- Implementacion de una cola.");
             System.out.println("5- Ordenar una cola.");
             System.out.println("0- Salir.");
             System.out.print("\nIngrese la opción: ");
+            
             opcion = var.nextInt();
-
-        
+            
             switch (opcion) {
                 case 1:
-
-                break;
+                    ArrayStack<Integer> stackArray = new ArrayStack<>();
+                    
+                    do {
+                        System.out.println("\na- Agregar un valor (push). ");
+                        System.out.println("b- Eliminar el elemento en la cima (pop). ");
+                        System.out.println("c- Ver el elemento en la cima sin eliminar (top). ");
+                        System.out.println("z- Salir.");
+                        System.out.print("\nIngrese la opción: ");
+                        opcion2 = var.next().charAt(0);
+                        
+                        switch(opcion2){
+                            case 'a':
+                                System.out.print("\nIngrese el valor a agregar: ");
+                                x = var.nextInt();
+                                stackArray.push(x);
+                                break;
+                            case 'b':
+                                stackArray.pop();
+                                break;
+                            case 'c':
+                                System.out.println("Elemento en la cima: " + stackArray.top());
+                                break;
+                        }
+                    } while (opcion2 != 'z');  
+                    break;
                 case 2:
+                    // Creo una pila para almacenar caracteres
+                    ArrayStack<Character> stackArray2 = new ArrayStack<>(); 
+                    
+                    System.out.print("\nIngrese una cadena: ");
+                    String cadena = var.next(); // Leo la cadena ingresada por el usuario
 
-                break;
+                    // Eliminar espacios en blanco y convertir a minúsculas
+                    cadena = cadena.replaceAll("\\s+", "").toLowerCase();
+
+                    // Lleno la pila con la primera mitad de los caracteres
+                    int mitad = cadena.length() / 2; // Calcular la mitad de la longitud de la cadena
+                    for (int i = 0; i < mitad; i++) {
+                        stackArray2.push(cadena.charAt(i)); // Agrego cada caracter de la primera mitad de la cadena a la pila
+                    }
+
+                    // Comparo los caracteres de la segunda mitad con la pila
+                    boolean esPalindromo = true;
+                    int inicio = mitad; // Variable para indicar el inicio de la segunda mitad de la cadena
+                    if (cadena.length() % 2 != 0) {
+                        inicio++; // Si la longitud de la cadena es impar, incremento el inicio para omitir el caracter del medio
+                    }
+                    for (int i = inicio; i < cadena.length(); i++) {
+                        if (cadena.charAt(i) != stackArray2.pop()) { // Comparo cada caracter de la segunda mitad con el caracter desapilado de la pila
+                            esPalindromo = false; // Si hay alguna diferencia, la cadena no es un palíndromo
+                            break;
+                        }
+                    }
+                    // Mostrar el resultado
+                    if (esPalindromo) {
+                        System.out.println("La cadena es un palíndromo.");
+                    } else {
+                        System.out.println("La cadena no es un palíndromo.");
+                    }
+                    break;
                 case 3:
-
-                break;
+                    // Lógica para expresiones matemáticas
+                    break;
                 case 4:
-
-                break;
+                    // Lógica para implementación de una cola
+                    break;
                 case 5:
-
-                break;
+                    // Lógica para ordenar una cola
+                    break;
             }       
         } while (opcion != 0);
     }
