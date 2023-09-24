@@ -1,4 +1,4 @@
-package INFO3.TP3;
+package INFO3.TP4;
 
 public class ListStack<AnyType> {
     private ListNode<AnyType> topOfStack = null;

@@ -1,13 +1,15 @@
 package INFO3.TP3;
 
 import java.util.Scanner;
-import java.util.Stack;
+
+import INFO3.TP4.ListStack;
 
 public class tp3 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
         int opcion, x;
         char opcion2;
+        
         
         do {
             // Mostrar opciones al usuario
@@ -84,7 +86,17 @@ public class tp3 {
                     }
                     break;
                 case 3:
-                    // Lógica para expresiones matemáticas
+                    System.out.print("\nIngrese una cadena: ");
+                    String expresion = var.nextLine();
+                    
+                    boolean estaEquilibrada = verificarEquilibrio(expresion);
+
+                    if (estaEquilibrada == true) {
+                        System.out.println("La expresion: "+expresion+" esta equilibrada");
+                    } else {
+                        System.out.println("La expresion: "+expresion+" esta deequilibrada");
+                    }
+                    
                     break;
                 case 4:
                     ArrayQueue<Integer> queueArray = new ArrayQueue<>();
@@ -121,4 +133,25 @@ public class tp3 {
             }       
         } while (opcion != 0);
     }
+
+    public static boolean verificarEquilibrio(String expresion) {
+        ListStack<Character> stackList = new ListStack<>();
+
+        for (int i = 0; i < expresion.length(); i++) {
+            char caracter = expresion.charAt(i);
+
+            if (caracter == '(') {
+                stackList.push(caracter);
+            } else if (caracter == ')') {
+                if (stackList.isEmpty()) {
+                    return false;
+                }
+                stackList.pop();
+            }
+        }
+
+        return stackList.isEmpty();
+    }
+
+
 }

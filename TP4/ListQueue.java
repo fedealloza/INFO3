@@ -1,4 +1,4 @@
-package INFO3.TP3;
+package INFO3.TP4;
 
 public class ListQueue<AnyType> {
     private ListNode<AnyType> front;
