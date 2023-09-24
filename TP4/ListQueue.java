@@ -54,4 +54,31 @@ public class ListQueue<AnyType> {
     public boolean isEmpty() {
         return front == null;
     }
+
+    public AnyType peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("ListQueue peek");
+        }
+        return front.element;
+    }
+
+    public AnyType poll() {
+        return dequeue();
+    }
+
+    public boolean offer(AnyType x) {
+        enqueue(x);
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode<AnyType> current = front;
+        while (current != null) {
+            sb.append(current.element).append(" ");
+            current = current.next;
+        }
+        return sb.toString().trim();
+    }
 }

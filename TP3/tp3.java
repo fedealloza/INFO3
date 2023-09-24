@@ -1,7 +1,10 @@
 package INFO3.TP3;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
+import INFO3.TP4.ListQueue;
 import INFO3.TP4.ListStack;
 
 public class tp3 {
@@ -128,7 +131,42 @@ public class tp3 {
                     } while (opcion2 != 'z'); 
                     break;
                 case 5:
-                    // Lógica para ordenar una cola
+                    ListQueue<Integer> cola = new ListQueue<>();
+
+                    do {
+                        System.out.println("\na- Agregar un valor (enqueue). ");
+                        System.out.println("b- Eliminar el elemento del frente (dequeue). ");
+                        System.out.println("c- Ver el elemento del frente sin eliminar (getFront). ");
+                        System.out.println("d- Imprimir la cola original y la cola ordenada. ");
+                        System.out.println("z- Salir.");
+                        System.out.print("\nIngrese la opción: ");
+                        opcion2 = var.next().charAt(0);
+                        
+                        switch(opcion2){
+                            case 'a':
+                                System.out.print("\nIngrese el valor a agregar: ");
+                                x = var.nextInt();
+                                cola.offer(x);
+                                break;
+                            case 'b':
+                                try {
+                                    cola.dequeue();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 'c':
+                                System.out.println("Elemento del frente: " + cola.getFront());
+                                break;
+                            case 'd':
+                                System.out.println("Cola original: " + cola);
+
+                                ordenarColaAscendente(cola);
+                                
+                                System.out.println("Cola ordenada en orden ascendente: " + cola);
+                            break;
+                        }
+                    } while (opcion2 != 'z'); 
                     break;
             }       
         } while (opcion != 0);
@@ -153,5 +191,21 @@ public class tp3 {
         return stackList.isEmpty();
     }
 
+    public static void ordenarColaAscendente(ListQueue<Integer> cola) {
+        ListQueue<Integer> colaAuxiliar = new ListQueue<>();
+        
+        while (!cola.isEmpty()) {
+            int elementoActual = cola.dequeue();
 
+            while (!colaAuxiliar.isEmpty() && colaAuxiliar.peek().compareTo(elementoActual) < 0) {
+                cola.enqueue(colaAuxiliar.dequeue());
+            }
+
+            colaAuxiliar.offer(elementoActual);
+        }
+
+        while (!colaAuxiliar.isEmpty()) {
+            cola.enqueue(colaAuxiliar.dequeue());
+        }
+    }
 }
