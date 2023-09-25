@@ -1,11 +1,9 @@
 package INFO3.TP3;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
-import INFO3.TP4.ListQueue;
-import INFO3.TP4.ListStack;
+import INFO3.TP3.ArrayQueue;
+import INFO3.TP3.ArrayStack;
 
 public class tp3 {
     public static void main(String[] args) {
@@ -90,7 +88,7 @@ public class tp3 {
                     break;
                 case 3:
                     System.out.print("\nIngrese una cadena: ");
-                    String expresion = var.nextLine();
+                    String expresion = var.next();
                     
                     boolean estaEquilibrada = verificarEquilibrio(expresion);
 
@@ -131,8 +129,8 @@ public class tp3 {
                     } while (opcion2 != 'z'); 
                     break;
                 case 5:
-                    ListQueue<Integer> cola = new ListQueue<>();
-
+                    ArrayQueue<Integer> cola = new ArrayQueue<>();
+                    
                     do {
                         System.out.println("\na- Agregar un valor (enqueue). ");
                         System.out.println("b- Eliminar el elemento del frente (dequeue). ");
@@ -173,39 +171,53 @@ public class tp3 {
     }
 
     public static boolean verificarEquilibrio(String expresion) {
-        ListStack<Character> stackList = new ListStack<>();
+        ArrayStack<Character> stackArray = new ArrayStack<>();
 
         for (int i = 0; i < expresion.length(); i++) {
             char caracter = expresion.charAt(i);
 
             if (caracter == '(') {
-                stackList.push(caracter);
+                stackArray.push(caracter);
             } else if (caracter == ')') {
-                if (stackList.isEmpty()) {
+                if (stackArray.isEmpty()) {
                     return false;
                 }
-                stackList.pop();
+                stackArray.pop();
             }
         }
 
-        return stackList.isEmpty();
+        return stackArray.isEmpty();
     }
 
-    public static void ordenarColaAscendente(ListQueue<Integer> cola) {
-        ListQueue<Integer> colaAuxiliar = new ListQueue<>();
-        
-        while (!cola.isEmpty()) {
-            int elementoActual = cola.dequeue();
+    public static void ordenarColaAscendente(ArrayQueue<Integer> cola) {
+        ArrayQueue<Integer> colaAuxiliar = new ArrayQueue<>();
+        int elementoActual=0;
 
-            while (!colaAuxiliar.isEmpty() && colaAuxiliar.peek().compareTo(elementoActual) < 0) {
-                cola.enqueue(colaAuxiliar.dequeue());
+        while(!cola.isEmpty()){
+            try {
+                elementoActual = cola.dequeue();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+        
+            while (!colaAuxiliar.isEmpty() && colaAuxiliar.getFront() < elementoActual) {
+                try {
+                    cola.enqueue(colaAuxiliar.dequeue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-            colaAuxiliar.offer(elementoActual);
+            cola.enqueue(elementoActual);
         }
 
         while (!colaAuxiliar.isEmpty()) {
-            cola.enqueue(colaAuxiliar.dequeue());
+            try {
+                cola.enqueue(colaAuxiliar.dequeue());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
