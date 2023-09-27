@@ -2,6 +2,7 @@ package INFO3.TP4;
 
 public class ListStack<AnyType> {
     private ListNode<AnyType> topOfStack = null;
+    private int size = 0;
 
     public boolean isEmpty() {
         return topOfStack == null;
@@ -9,6 +10,7 @@ public class ListStack<AnyType> {
 
     public void makeEmpty() {
         topOfStack = null;
+        size = 0;
     }
 
     private class ListNode<AnyType> {
@@ -23,6 +25,7 @@ public class ListStack<AnyType> {
 
     public void push(AnyType x) {
         topOfStack = new ListNode<AnyType>(x, topOfStack);
+        size++;
     }
 
     public void pop() {
@@ -30,6 +33,7 @@ public class ListStack<AnyType> {
             throw new RuntimeException("ListStack pop");
         }
         topOfStack = topOfStack.next;
+        size--;
     }
 
     public AnyType top() {
@@ -45,6 +49,25 @@ public class ListStack<AnyType> {
         }
         AnyType topItem = topOfStack.element;
         topOfStack = topOfStack.next;
+        size--;
         return topItem;
+    }
+
+    public void push(int x) {
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public AnyType get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("ListStack get");
+        }
+        ListNode<AnyType> current = topOfStack;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.element;
     }
 }
