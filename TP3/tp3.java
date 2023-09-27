@@ -2,9 +2,6 @@ package INFO3.TP3;
 
 import java.util.Scanner;
 
-import INFO3.TP3.ArrayQueue;
-import INFO3.TP3.ArrayStack;
-
 public class tp3 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
