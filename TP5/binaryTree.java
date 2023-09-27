@@ -50,6 +50,14 @@ public class binaryTree<AnyType>{
         return root == null;
     }
 
+
+    /*
+     * Forma un nuevo árbol a partir de rootItem, t1 y t2.
+
+        No permite que t1 y t2 sean iguales.
+
+        Maneja correctamente otras condiciones de alias.
+     */
     public void merge(AnyType rootItem, binaryTree<AnyType> t1, binaryTree<AnyType> t2){
         if (t1.root == t2.root && t1.root != null) {
             throw new IllegalArgumentException();

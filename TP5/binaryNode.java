@@ -1,7 +1,5 @@
 package INFO3.TP5;
 
-import org.omg.CORBA.Any;
-
 public class binaryNode<AnyType> {
 
     private AnyType element;
