@@ -188,16 +188,18 @@ public class tp3 {
 
     public static void ordenarColaAscendente(ArrayQueue<Integer> cola) {
         ArrayQueue<Integer> colaAuxiliar = new ArrayQueue<>();
+
         int elementoActual=0;
 
         while(!cola.isEmpty()){
             try {
                 elementoActual = cola.dequeue();
+                colaAuxiliar.enqueue(elementoActual);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         
-        
+            System.out.println(colaAuxiliar);
             while (!colaAuxiliar.isEmpty() && colaAuxiliar.getFront() < elementoActual) {
                 try {
                     cola.enqueue(colaAuxiliar.dequeue());
@@ -205,8 +207,6 @@ public class tp3 {
                     e.printStackTrace();
                 }
             }
-
-            cola.enqueue(elementoActual);
         }
 
         while (!colaAuxiliar.isEmpty()) {
