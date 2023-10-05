@@ -2,12 +2,14 @@ package INFO3.TP5;
 
 public class binaryNode<AnyType> {
 
-    private AnyType element;
-    private binaryNode<AnyType> left;
-    private binaryNode<AnyType> right;
+    protected AnyType element;
+    protected binaryNode<AnyType> left;
+    protected binaryNode<AnyType> right;
 
-    public binaryNode(){
-        this(null, null , null);
+    public binaryNode(AnyType element) {
+        this.element = element;
+        this.left = null;
+        this.right = null;
     }
     
     public binaryNode(AnyType theElement, binaryNode<AnyType> lt, binaryNode<AnyType> rt){

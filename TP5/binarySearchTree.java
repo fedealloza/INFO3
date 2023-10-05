@@ -4,8 +4,54 @@ public class binarySearchTree <AnyType extends Comparable<? super AnyType>> {
     
     protected binaryNode<AnyType> root;
     
-    public binaryTree(){
+    public binarySearchTree() {
         root = null;
+    }
+    
+    public binaryNode<AnyType> getRoot() {
+        return root;
+    }
+    
+    public int size() {
+        return binaryNode.size(root);
+    }
+    
+    public int height() {
+        return binaryNode.height(root);
+    }
+    
+    public void printPreOrder() {
+        if (root != null) {
+            root.printPreOrder();
+        }
+    }
+    
+    public void printInOrder() {
+        if (root != null) {
+            root.printInOrder();
+        }
+    }
+    
+    public void printPostOrder() {
+        if (root != null) {
+            root.printPostOrder();
+        }
+    }
+    
+    public void merge(AnyType rootItem, binarySearchTree<AnyType> t1, binarySearchTree<AnyType> t2) {
+        if (t1.root == t2.root && t1.root != null) {
+            throw new IllegalArgumentException();
+        }
+        
+        root = new binaryNode<AnyType>(rootItem, t1.root, t2.root);
+        
+        if (this != t1) {
+            t1.root = null;
+        }
+        
+        if (this != t2) {
+            t2.root = null;
+        }
     }
 
     public void insert(AnyType x){
@@ -80,9 +126,9 @@ public class binarySearchTree <AnyType extends Comparable<? super AnyType>> {
         } else if (x.compareTo(t.element) > 0) {
             t.right = insert(x, t.right);
         }
-        else {
-            throw new DuplicateItemException(x.toString()); //Duplicate
-        }
+        //else {
+        //    throw new DuplicateItemException(x.toString()); //Duplicate
+        //}
         return t;
     }
 
@@ -99,6 +145,7 @@ public class binarySearchTree <AnyType extends Comparable<? super AnyType>> {
     }
 
     protected binaryNode<AnyType> remove(AnyType x, binaryNode<AnyType> t){
+        binaryNode<AnyType> temp;
         if (t == null) {
             throw new DuplicateItemException(x.toString());
         }
@@ -114,6 +161,4 @@ public class binarySearchTree <AnyType extends Comparable<? super AnyType>> {
             t = (t.left != null ) ? t.left : t.right ;
         }
     }
-
-
 }
