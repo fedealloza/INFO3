@@ -2,10 +2,12 @@ package INFO3.TP5;
 import java.util.Random;
 import java.util.Scanner;
 
+import INFO3.TP3.tp3;
+
 public class tp5 {
     public static void main(String[] args) {
         Scanner var = new Scanner(System.in);
-        int opcion, x;
+        int opcion, x, opcion3;
         char opcion2;
         binarySearchTree<Integer> arbolBinario = new binarySearchTree<>();
         do {
@@ -57,10 +59,25 @@ public class tp5 {
                 } while (opcion2 != 'z');
                     break;
                 case 3:
+                    System.out.println("EL ARBOL NO ACEPTA VALORES DUPLICADOS");
+                    System.out.println("ELIMINE LA EXCEPCION DEL DATO DUPLICADO E HICE UN NUEVO METODO");
+                    Random random2 = new Random();
+                    // Agregar 10 valores aleatorios al árbol
+                    for (int i = 0; i < 12; i++) {
+                        x = random2.nextInt(26);
+                        arbolBinario.insertWithDuplicate(x);
+                    }
                     break;
                 case 4:
+                    
                     break;
                 case 5:
+                    System.out.print("Ingrese el valor a borrar: ");
+                    x = var.nextInt();
+                    arbolBinario.remove(x);
+                    System.out.println("ARBOL BINARIO IN ORDER");
+                    // Imprimir el árbol en orden
+                    arbolBinario.printInOrder();
                     break;
             }       
         } while (opcion != 0);
